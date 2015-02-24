@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)http://shiny.rstudio.com/tutorial/lesson4/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Shiny - Display reactive output</title>
+  <meta property="st:title" content="Display reactive output">
+  <link rel="stylesheet" type="text/css" href="./Shiny - Display reactive output_files/bootstrap.min.css">
+  <script type="text/javascript" async="" src="http://s.swiftypecdn.com/cc.js"></script><script type="text/javascript" async="" src="./Shiny - Display reactive output_files/swiftype_nocode-1e2450bb2c8ab71c76799ca74494b5c6.js"></script><script type="text/javascript" async="" src="./Shiny - Display reactive output_files/embed.js"></script><script async="" src="http://www.google-analytics.com/analytics.js"></script><script src="./Shiny - Display reactive output_files/highlight.min.js"></script>
+  <script src="./Shiny - Display reactive output_files/jquery-1.10.2.min.js"></script>
+  <script src="./Shiny - Display reactive output_files/bootstrap.min.js"></script>
+  <link href="./Shiny - Display reactive output_files/css" rel="stylesheet" type="text/css">
+  <link href="./Shiny - Display reactive output_files/css(1)" rel="stylesheet" type="text/css">
+  <link href="./Shiny - Display reactive output_files/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="./Shiny - Display reactive output_files/global.css">
+  <script src="./Shiny - Display reactive output_files/respond.min.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-20375833-9', 'rstudio.com');
+    ga('require', 'linkid', 'linkid.js');
+    ga('send', 'pageview');
+  </script>
+<script type="text/javascript" async="" src="./Shiny - Display reactive output_files/embed(1).js"></script><link rel="stylesheet" type="text/css" href="./Shiny - Display reactive output_files/swiftype_nocode-862cc0feac61f00e170fbcc6360aeeb7.css"></head>
+<body>
+  <div class="header">
+  <div class="container brand">
+    <div class="search pull-right">
+      <form>
+        <input id="st-search-input" type="text" class="form-control input-sm" placeholder="Search" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<script type="text/javascript">
+  var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'PeTiSRv94X52JCzFyMzF';
+      Swiftype.disableAutocomplete = true;        
+      /** DO NOT EDIT BELOW THIS LINE **/
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+</script>
+
+      </form>
+    </div>
+    <a href="http://shiny.rstudio.com/">Shiny</a>
+    <span id="credits">by <a href="http://www.rstudio.com/">RStudio</a></span>
+  </div>
+</div>
+<div class="container content">
+  <div class="row">
+    <div class="col-md-2 col-sm-12">
+      <div class="nav nav-primary punchup">
+        <ul class="list-unstyled">
+          <li><a href="http://shiny.rstudio.com/">Overview</a></li>
+          <li class="active"><a href="http://shiny.rstudio.com/tutorial/">Tutorial</a></li>
+          <li><a href="http://shiny.rstudio.com/articles/">Articles</a></li>
+          <li><a href="http://shiny.rstudio.com/gallery/">Gallery</a></li>
+          <li><a href="http://shiny.rstudio.com/reference/shiny/latest">Reference</a></li>
+          <li><a href="http://shiny.rstudio.com/deploy/">Deploy</a></li>
+          <li><a href="http://shiny.rstudio.com/help/">Help</a></li>
+        </ul>
+      </div>
+    </div>
+    
+<script>
+$(document).on("click", ".answer-toggle", function(e) {
+  $(this).parent(".answer").find(".answer-content").fadeIn();
+  $(this).hide();
+  e.preventDefault();
+});
+</script>
+
+<div class="col-md-8 col-sm-12 tutorial constrain-image-width">
+  <ul class="pagination">
+    
+    <li><a href="http://shiny.rstudio.com/tutorial/lesson3"><i class="fa fa-chevron-left"></i></a></li>
+    
+
+    
+    <li><a href="http://shiny.rstudio.com/tutorial/lesson1">1</a></li>
+    
+    <li><a href="http://shiny.rstudio.com/tutorial/lesson2">2</a></li>
+    
+    <li><a href="http://shiny.rstudio.com/tutorial/lesson3">3</a></li>
+    
+    <li class="active"><a href="http://shiny.rstudio.com/tutorial/lesson4">Lesson 4</a></li>
+    
+    <li><a href="http://shiny.rstudio.com/tutorial/lesson5">5</a></li>
+    
+    <li><a href="http://shiny.rstudio.com/tutorial/lesson6">6</a></li>
+    
+    <li><a href="http://shiny.rstudio.com/tutorial/lesson7">7</a></li>
+    
+
+    
+    <li><a href="http://shiny.rstudio.com/tutorial/lesson5"><i class="fa fa-chevron-right"></i></a></li>
+    
+  </ul>
+
+  <h1>
+    <small class="tutorial-lesson-number punchup">Lesson 4</small><br>
+    Display reactive output
+  </h1>
+  <p>Time to give your Shiny app a “live” quality! This lesson will teach you how to build reactive output to display in your Shiny app. Reactive output automatically responds when your user toggles a widget.</p>
+
+<p>By the end of this lesson, you’ll know how to make a simple Shiny app with two reactive lines of text. Each line will display the values of a widget based on your user’s input.</p>
+
+<p><img src="./Shiny - Display reactive output_files/paste.png" alt=""></p>
+
+<p>This new Shiny app will need its own, new directory. Create a folder in your working directory named <code>census-app</code>. This is where we’ll save the <code>ui.R</code> and <code>server.R</code> files that you make in this lesson.</p>
+
+<h2 id="two-steps">Two steps</h2>
+
+<p>You can create reactive output with a two step process. </p>
+
+<ol>
+  <li>Add an R object to your user-interface with <code>ui.R</code>. </li>
+  <li>Tell Shiny how to build the object in <code>server.R</code>. The object will be reactive if the code that builds it calls a widget value.</li>
+</ol>
+
+<h3 id="step-1-add-an-r-object-to-the-ui">Step 1: Add an R object to the UI</h3>
+
+<p>Shiny provides a family of functions that turn R objects into output for your user-interface. Each function creates a specific type of output. </p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Output function</th>
+      <th>creates</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>htmlOutput</td>
+      <td>raw HTML</td>
+    </tr>
+    <tr>
+      <td>imageOutput</td>
+      <td>image</td>
+    </tr>
+    <tr>
+      <td>plotOutput</td>
+      <td>plot</td>
+    </tr>
+    <tr>
+      <td>tableOutput</td>
+      <td>table</td>
+    </tr>
+    <tr>
+      <td>textOutput</td>
+      <td>text</td>
+    </tr>
+    <tr>
+      <td>uiOutput</td>
+      <td>raw HTML</td>
+    </tr>
+    <tr>
+      <td>verbatimTextOutput</td>
+      <td>text</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>You can add output to the user-interface in the same way that you added HTML elements and widgets.  Place the output function inside <code>sidebarPanel</code> or <code>mainPanel</code> in the <code>ui.R</code> script.</p>
+
+<p>For example, the ui.R file below uses <code>textOutput</code> to add a reactive line of text to the main panel of the Shiny app pictured above. </p>
+
+<div class="highlight"><pre><code class="r"><span class="c1"><span class="comment"># ui.R</span></span>
+
+<span class="identifier">shinyUI</span><span class="p"><span class="paren">(</span></span><span class="identifier">fluidPage</span><span class="p"><span class="paren">(</span></span>
+  <span class="identifier">titlePanel</span><span class="p"><span class="paren">(</span></span><span class="s"><span class="string">"censusVis"</span></span><span class="p"><span class="paren">)</span>,</span>
+  
+  <span class="identifier">sidebarLayout</span><span class="p"><span class="paren">(</span></span>
+    <span class="identifier">sidebarPanel</span><span class="p"><span class="paren">(</span></span>
+      <span class="identifier">helpText</span><span class="p"><span class="paren">(</span></span><span class="s"><span class="string">"Create demographic maps with </span></span><span class="string">
+<span class="s">        information from the 2010 US Census."</span></span><span class="s"></span><span class="p"><span class="paren">)</span>,</span>
+      
+      <span class="identifier">selectInput</span><span class="p"><span class="paren">(</span></span><span class="s"><span class="string">"var"</span></span><span class="p">,</span> 
+        <span class="identifier">label</span> <span class="o"><span class="operator">=</span></span> <span class="s"><span class="string">"Choose a variable to display"</span></span><span class="p">,</span>
+        <span class="identifier">choices</span> <span class="o"><span class="operator">=</span></span> <span class="identifier">c</span><span class="p"><span class="paren">(</span></span><span class="s"><span class="string">"Percent White"</span></span><span class="p">,</span> <span class="s"><span class="string">"Percent Black"</span></span><span class="p">,</span>
+          <span class="s"><span class="string">"Percent Hispanic"</span></span><span class="p">,</span> <span class="s"><span class="string">"Percent Asian"</span></span><span class="p"><span class="paren">)</span>,</span>
+        <span class="identifier">selected</span> <span class="o"><span class="operator">=</span></span> <span class="s"><span class="string">"Percent White"</span></span><span class="p"><span class="paren">)</span>,</span>
+      
+      <span class="identifier">sliderInput</span><span class="p"><span class="paren">(</span></span><span class="s"><span class="string">"range"</span></span><span class="p">,</span> 
+        <span class="identifier">label</span> <span class="o"><span class="operator">=</span></span> <span class="s"><span class="string">"Range of interest:"</span></span><span class="p">,</span>
+        <span class="identifier">min</span> <span class="o"><span class="operator">=</span></span> <span class="m"><span class="number">0</span></span><span class="p">,</span> <span class="identifier">max</span> <span class="o"><span class="operator">=</span></span> <span class="m"><span class="number">100</span></span><span class="p">,</span> <span class="identifier">value</span> <span class="o"><span class="operator">=</span></span> <span class="identifier">c</span><span class="p"><span class="paren">(</span></span><span class="m"><span class="number">0</span></span><span class="p">,</span> <span class="m"><span class="number">100</span></span><span class="p"><span class="paren">)</span><span class="paren">)</span></span>
+    <span class="p"><span class="paren">)</span>,</span>
+    
+    <span class="identifier">mainPanel</span><span class="p"><span class="paren">(</span></span>
+      <span class="identifier">textOutput</span><span class="p"><span class="paren">(</span></span><span class="s"><span class="string">"text1"</span></span><span class="p"><span class="paren">)</span></span>
+    <span class="p"><span class="paren">)</span></span>
+  <span class="p"><span class="paren">)</span></span>
+<span class="p"><span class="paren">)</span><span class="paren">)</span></span>
+</code></pre></div>
+
+<p>Notice that <code>textOutput</code> takes an argument, the character string “text1”. Each of the <code>*Output</code> functions require a single argument: a character string that Shiny will use as the name of your reactive element. Your users will not see this name, but you will use it later.</p>
+
+<h3 id="step-2-provide-r-code-to-build-the-object">Step 2: Provide R code to build the object.</h3>
+
+<p>Placing a function in <code>ui.R</code> tells Shiny where to display your object. Next, you need to tell Shiny how to build the object. </p>
+
+<p>Do this by providing R code that builds the object in <code>server.R</code>. The code should go in the unnamed function that appears inside <code>shinyServer</code> in your <code>server.R</code> script. </p>
+
+<p>The unnamed function plays a special role in the Shiny process; it builds a list-like object named <code>output</code> that contains all of the code needed to update the R objects in your app. Each R object needs to have its own entry in the list. </p>
+
+<p>You can create an entry by defining a new element for <code>output</code> within the unnamed function, like below. The element name should match the name of the reactive element that you created in <code>ui.R</code>. </p>
+
+<p>In the script below, <code>output$text1</code> matches <code>textOutput("text1")</code> in your <code>ui.R</code> script.</p>
+
+<div class="highlight"><pre><code class="r"><span class="c1"><span class="comment"># server.R</span></span>
+
+<span class="identifier">shinyServer</span><span class="p"><span class="paren">(</span></span><span class="kr"><span class="keyword">function</span></span><span class="p"><span class="paren">(</span></span><span class="identifier">input</span><span class="p">,</span> <span class="identifier">output</span><span class="p"><span class="paren">)</span></span> <span class="p"><span class="paren">{</span></span>
+
+     <span class="identifier">output</span><span class="o"><span class="operator">$</span></span><span class="identifier">text1</span> <span class="o"><span class="operator">&lt;-</span></span> <span class="identifier">renderText</span><span class="p"><span class="paren">(</span><span class="paren">{</span></span> 
+          <span class="s"><span class="string">"You have selected this"</span></span>
+     <span class="p"><span class="paren">}</span><span class="paren">)</span></span>
+
+  <span class="p"><span class="paren">}</span></span>
+<span class="p"><span class="paren">)</span></span>
+</code></pre></div>
+
+<p>You do not need to arrange for the unnamed function to return <code>output</code> in its last line of code. R will automatically update <code>output</code> through reference class semantics.</p>
+
+<p>Each entry to <code>output</code> should contain the output of one of Shiny’s <code>render*</code> functions. These functions capture an R expression and do some light pre-processing on the expression. Use the <code>render*</code> function that corrresponds to the type of reactive object you are making.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>render function</th>
+      <th>creates</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>renderImage</code></td>
+      <td>images (saved as a link to a source file)</td>
+    </tr>
+    <tr>
+      <td><code>renderPlot</code></td>
+      <td>plots</td>
+    </tr>
+    <tr>
+      <td><code>renderPrint</code></td>
+      <td>any printed output</td>
+    </tr>
+    <tr>
+      <td><code>renderTable</code></td>
+      <td>data frame, matrix, other table like structures</td>
+    </tr>
+    <tr>
+      <td><code>renderText</code></td>
+      <td>character strings</td>
+    </tr>
+    <tr>
+      <td><code>renderUI</code></td>
+      <td>a Shiny tag object or HTML</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Each <code>render*</code> function takes a single argument: an R expression surrounded by braces, <code>{}</code>. The expression can be one simple line of text, or it can involve many lines of code, as if it were a complicated function call. </p>
+
+<p>Think of this R expression as a set of instructions that you give Shiny to store for later. Shiny will run the instructions when you first launch your app, and then Shiny will re-run the instructions every time it needs to update your object. </p>
+
+<p>For this to work, your expression should return the object you have in mind (a piece of text, a plot, a data frame, etc). You will get an error if the expression does not return an object, or if it returns the wrong type of object.</p>
+
+<h3 id="use-widget-values">Use widget values</h3>
+
+<p>If you run the <code>server.R</code> script above, the Shiny app will display “You have selected this” in the main panel. However, the text will not be reactive. It will not change even if you manipulate the widgets of your app. </p>
+
+<p>You can make the text reactive by asking Shiny to call a widget value when it builds the text. Let’s look at how to do this.</p>
+
+<p>Take a look at the first line of code in <code>server.R</code>. Do you notice that the unnamed function mentions <em>two</em> arguments, <code>input</code> and <code>output</code>? You already saw that <code>output</code> is a list-like object that stores instructions for building the R objects in your app.</p>
+
+<p><code>input</code> is a second list-like object. It stores the current values of all of the widgets in your app. These values will be saved under the names that you gave the widgets in <code>ui.R</code>. </p>
+
+<p>So for example, our app has two widgets, one named “var” and one named “range” (you gave the widgets these names in <a href="http://shiny.rstudio.com/tutorial/lesson3/">Lesson 3</a>). The values of “var” and “range” will be saved in <code>input</code> as <code>input$var</code> and <code>input$range</code>. Since the slider widget has two values (a min and a max), <code>input$range</code> will contain a vector of length two. </p>
+
+<p>Shiny will automatically make an object reactive if the object uses an <code>input</code> value. For example, the server.R file below creates a reactive line of text by calling the value of the select box widget to build the text.</p>
+
+<div class="highlight"><pre><code class="r"><span class="c1"><span class="comment"># server.R</span></span>
+
+<span class="identifier">shinyServer</span><span class="p"><span class="paren">(</span></span>
+  <span class="kr"><span class="keyword">function</span></span><span class="p"><span class="paren">(</span></span><span class="identifier">input</span><span class="p">,</span> <span class="identifier">output</span><span class="p"><span class="paren">)</span></span> <span class="p"><span class="paren">{</span></span>
+  
+    <span class="identifier">output</span><span class="o"><span class="operator">$</span></span><span class="identifier">text1</span> <span class="o"><span class="operator">&lt;-</span></span> <span class="identifier">renderText</span><span class="p"><span class="paren">(</span><span class="paren">{</span></span> 
+      <span class="identifier">paste</span><span class="p"><span class="paren">(</span></span><span class="s"><span class="string">"You have selected"</span></span><span class="p">,</span> <span class="identifier">input</span><span class="o"><span class="operator">$</span></span><span class="identifier">var</span><span class="p"><span class="paren">)</span></span>
+    <span class="p"><span class="paren">}</span><span class="paren">)</span></span>
+    
+  <span class="p"><span class="paren">}</span></span>
+<span class="p"><span class="paren">)</span></span>
+</code></pre></div>
+
+<p>Shiny tracks which outputs depend on which widgets. When a user changes a widget, Shiny will rebuild all of the outputs that depend on the widget, using the new value of the widget as it goes. As a result, the rebuilt objects will be completely up-to-date. </p>
+
+<p>This is how you create reactivity with Shiny, by connecting the values of <code>input</code> to the objects in <code>output</code>. Shiny takes care of all of the other details.</p>
+
+<h2 id="launch-your-app-and-see-the-reactive-output">Launch your app and see the reactive output</h2>
+
+<p>When you are ready, update your <code>server.R</code> and <code>ui.R</code> files to match those above. Then launch your Shiny app by running <code>runApp("censusVis", display.mode = "showcase")</code> at the command line. Your app should look like the app below, and your statement should update instantly as you change the select box widget. </p>
+
+<p>Watch the <code>server.R</code> script. When Shiny rebuilds an output, it highlights the code it is running. This temporary highlighting can help you see how Shiny generates reactive output.</p>
+
+<p><img src="./Shiny - Display reactive output_files/paste2.png" alt=""></p>
+
+<h2 id="your-turn">Your turn</h2>
+
+<p>Add a second line of reactive text to the main panel of your Shiny app. This line should display “You have chosen a range that goes from <em>something</em> to <em>something</em>”, and each <em>something</em> should show the current minimum (min) or maximum (max) value of the slider widget.</p>
+
+<p>Don’t forget to update both your <code>ui.R</code> and <code>server.R</code> files. </p>
+
+<h3 id="model-answer">Model answer</h3>
+
+<div class="answer"><a class="btn btn-default answer-toggle" href="http://shiny.rstudio.com/tutorial/lesson4/#">Reveal answer</a><div class="answer-content">
+<div class="highlight"><pre><code class="r"><span class="c1"><span class="comment"># ui.R</span></span>
+
+<span class="identifier">shinyUI</span><span class="p"><span class="paren">(</span></span><span class="identifier">fluidPage</span><span class="p"><span class="paren">(</span></span>
+  <span class="identifier">titlePanel</span><span class="p"><span class="paren">(</span></span><span class="s"><span class="string">"censusVis"</span></span><span class="p"><span class="paren">)</span>,</span>
+  
+  <span class="identifier">sidebarLayout</span><span class="p"><span class="paren">(</span></span>
+    <span class="identifier">sidebarPanel</span><span class="p"><span class="paren">(</span></span>
+      <span class="identifier">helpText</span><span class="p"><span class="paren">(</span></span><span class="s"><span class="string">"Create demographic maps with </span></span><span class="string">
+<span class="s">        information from the 2010 US Census."</span></span><span class="s"></span><span class="p"><span class="paren">)</span>,</span>
+      
+      <span class="identifier">selectInput</span><span class="p"><span class="paren">(</span></span><span class="s"><span class="string">"var"</span></span><span class="p">,</span> 
+        <span class="identifier">label</span> <span class="o"><span class="operator">=</span></span> <span class="s"><span class="string">"Choose a variable to display"</span></span><span class="p">,</span>
+        <span class="identifier">choices</span> <span class="o"><span class="operator">=</span></span> <span class="identifier">c</span><span class="p"><span class="paren">(</span></span><span class="s"><span class="string">"Percent White"</span></span><span class="p">,</span> <span class="s"><span class="string">"Percent Black"</span></span><span class="p">,</span>
+          <span class="s"><span class="string">"Percent Hispanic"</span></span><span class="p">,</span> <span class="s"><span class="string">"Percent Asian"</span></span><span class="p"><span class="paren">)</span>,</span>
+        <span class="identifier">selected</span> <span class="o"><span class="operator">=</span></span> <span class="s"><span class="string">"Percent White"</span></span><span class="p"><span class="paren">)</span>,</span>
+      
+      <span class="identifier">sliderInput</span><span class="p"><span class="paren">(</span></span><span class="s"><span class="string">"range"</span></span><span class="p">,</span> 
+        <span class="identifier">label</span> <span class="o"><span class="operator">=</span></span> <span class="s"><span class="string">"Range of interest:"</span></span><span class="p">,</span>
+        <span class="identifier">min</span> <span class="o"><span class="operator">=</span></span> <span class="m"><span class="number">0</span></span><span class="p">,</span> <span class="identifier">max</span> <span class="o"><span class="operator">=</span></span> <span class="m"><span class="number">100</span></span><span class="p">,</span> <span class="identifier">value</span> <span class="o"><span class="operator">=</span></span> <span class="identifier">c</span><span class="p"><span class="paren">(</span></span><span class="m"><span class="number">0</span></span><span class="p">,</span> <span class="m"><span class="number">100</span></span><span class="p"><span class="paren">)</span><span class="paren">)</span></span>
+    <span class="p"><span class="paren">)</span>,</span>
+    
+    <span class="identifier">mainPanel</span><span class="p"><span class="paren">(</span></span>
+      <span class="identifier">textOutput</span><span class="p"><span class="paren">(</span></span><span class="s"><span class="string">"text1"</span></span><span class="p"><span class="paren">)</span>,</span>
+      <span class="identifier">textOutput</span><span class="p"><span class="paren">(</span></span><span class="s"><span class="string">"text2"</span></span><span class="p"><span class="paren">)</span></span>
+    <span class="p"><span class="paren">)</span></span>
+  <span class="p"><span class="paren">)</span></span>
+<span class="p"><span class="paren">)</span><span class="paren">)</span></span>
+</code></pre></div>
+
+<p>And </p>
+
+<div class="highlight"><pre><code class="r"><span class="c1"><span class="comment"># server.R</span></span>
+
+<span class="identifier">shinyServer</span><span class="p"><span class="paren">(</span></span>
+  <span class="kr"><span class="keyword">function</span></span><span class="p"><span class="paren">(</span></span><span class="identifier">input</span><span class="p">,</span> <span class="identifier">output</span><span class="p"><span class="paren">)</span></span> <span class="p"><span class="paren">{</span></span>
+  
+    <span class="identifier">output</span><span class="o"><span class="operator">$</span></span><span class="identifier">text1</span> <span class="o"><span class="operator">&lt;-</span></span> <span class="identifier">renderText</span><span class="p"><span class="paren">(</span><span class="paren">{</span></span> 
+      <span class="identifier">paste</span><span class="p"><span class="paren">(</span></span><span class="s"><span class="string">"You have selected"</span></span><span class="p">,</span> <span class="identifier">input</span><span class="o"><span class="operator">$</span></span><span class="identifier">var</span><span class="p"><span class="paren">)</span></span>
+    <span class="p"><span class="paren">}</span><span class="paren">)</span></span>
+    
+    <span class="identifier">output</span><span class="o"><span class="operator">$</span></span><span class="identifier">text2</span> <span class="o"><span class="operator">&lt;-</span></span> <span class="identifier">renderText</span><span class="p"><span class="paren">(</span><span class="paren">{</span></span> 
+      <span class="identifier">paste</span><span class="p"><span class="paren">(</span></span><span class="s"><span class="string">"You have chosen a range that goes from"</span></span><span class="p">,</span>
+        <span class="identifier">input</span><span class="o"><span class="operator">$</span></span><span class="identifier">range</span><span class="p"><span class="paren">[</span></span><span class="m"><span class="number">1</span></span><span class="p"><span class="paren">]</span>,</span> <span class="s"><span class="string">"to"</span></span><span class="p">,</span> <span class="identifier">input</span><span class="o"><span class="operator">$</span></span><span class="identifier">range</span><span class="p"><span class="paren">[</span></span><span class="m"><span class="number">2</span></span><span class="p"><span class="paren">]</span><span class="paren">)</span></span>
+    <span class="p"><span class="paren">}</span><span class="paren">)</span></span>
+    
+  <span class="p"><span class="paren">}</span></span>
+<span class="p"><span class="paren">)</span></span>
+</code></pre></div>
+
+<h3 id="discussion">Discussion</h3>
+
+<p>Add the second line of text in the same way that you added the first one. Use <code>textOutput</code> in <code>ui.R</code> to place the second line of text in the main panel. Use <code>renderText</code> in <code>server.R</code> to tell Shiny how to build the text. You’ll need to use the same name to refer to the text in both scripts (e.g., “text2”). </p>
+
+<p>Your text should use both the slider’s min value (saved as <code>input$range[1]</code>) and its max value (saved as <code>input$range[2]</code>). </p>
+
+<p>Remember that your text will be reactive as long as you connect <code>input</code> values to <code>output</code> objects. Shiny creates reactivity automatically when it recognizes these connections.</p>
+
+</div></div>
+
+<h2 id="recap">Recap</h2>
+
+<p>In this lesson, you created your first reactive Shiny app. Along the way, you learned to</p>
+
+<ul>
+  <li>use an <code>*Output</code> function in the <code>ui.R</code> script to place reactive objects in your Shiny app</li>
+  <li>use a <code>render*</code> function in the <code>server.R</code> script to tell Shiny how to build your objects</li>
+  <li>surround R expressions by braces, <code>{}</code>, in each <code>render*</code> function</li>
+  <li>save your <code>render*</code> expressions in the <code>output</code> list, with one entry for each reactive object in your app.</li>
+  <li>create reactivity by including an <code>input</code> value in a <code>render*</code> expression</li>
+</ul>
+
+<p>If you follow these rules, Shiny will automatically make your objects reactive.</p>
+
+<p>In <a href="http://shiny.rstudio.com/tutorial/lesson5/">Lesson 5</a> you will create a more sophisticated reactive app that relies on R scripts and external data. </p>
+
+
+  
+    <p>
+      <a class="btn btn-primary" href="http://shiny.rstudio.com/tutorial/lesson5">
+        Continue to lesson 5
+      </a>
+    </p>
+  
+    <br>
+  <hr>
+  <p>Let us know what you think! If you have a sophisticated question, or want an in depth answer, please post at the <a href="https://groups.google.com/forum/#!forum/shiny-discuss">Shiny Discussion Forum</a>, where we can respond at length. For help with code, check out <a href="http://shiny.rstudio.com/articles/help.html">How to get help</a>.</p>
+
+<div id="disqus_thread"><iframe id="dsq-2" data-disqus-uid="2" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./Shiny - Display reactive output_files/saved_resource.html" style="width: 100% !important; border: none !important; overflow: hidden !important; height: 6542px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe><iframe id="dsq-indicator-north" data-disqus-uid="indicator-north" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" style="width: 637px !important; border: none !important; overflow: hidden !important; top: 0px !important; min-width: 637px !important; max-width: 637px !important; position: fixed !important; z-index: 2147483646 !important; height: 29px !important; min-height: 29px !important; max-height: 29px !important; display: none !important;"></iframe><iframe id="dsq-indicator-south" data-disqus-uid="indicator-south" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" style="width: 637px !important; border: none !important; overflow: hidden !important; bottom: 0px !important; min-width: 637px !important; max-width: 637px !important; position: fixed !important; z-index: 2147483646 !important; height: 29px !important; min-height: 29px !important; max-height: 29px !important; display: none !important;"></iframe></div>
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+var disqus_shortname = 'shiny-rstudio'; // required: replace example with your forum shortname
+
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the &lt;a href="http://disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;</noscript>
+
+</div>
+
+  </div>
+</div>
+<div class="footer">
+  <div class="footer-inner">
+    Shiny is an <a href="http://www.rstudio.com/">RStudio</a> project.
+    © 2014 RStudio, Inc.
+  </div>
+</div>
+
+<script type="text/javascript">
+document.write(unescape("%3Cscript src='//munchkin.marketo.net/munchkin.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="http://munchkin.marketo.net/munchkin.js" type="text/javascript"></script>
+<script>Munchkin.init('709-NXN-706');</script>
+
+
+
+<div id="st-main-container" style="display: none;">
+  <div class="swiftype">
+  <a class="close" data-dismiss="st-modal" href="http://shiny.rstudio.com/tutorial/lesson4/#">×</a>
+  <div class="st-search-bar st-only-input">
+    <form>
+      <div class="st-input-wrapper">
+        <div class="st-input-inner">
+          <input type="text" value="" id="st-overlay-search-input" placeholder="search this website" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+          <span class="st-input-icon"></span>
+          <a href="https://swiftype.com/?ref=pbo" class="st-input-powered-by st-powered-by" target="_blank"></a>
+        </div>
+        <input type="submit" value="search" id="submitbutton">
+      </div>
+    </form>
+  </div>
+  <div class="st-result-wrapper" style="min-height: 612px;">
+    <div class="st-result-listing">
+      <div class="st-results">
+      </div>
+      <div class="st-indexing-notice" style="display: none;">
+        This site is still being indexed. Please try your search again in a few minutes.
+      </div>
+      <div class="st-logo-footer st-powered-by">
+        <a href="http://swiftype.com/?ref=pbo" target="_blank">search by swiftype</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div><div class="swiftype-widget"><div class="autocomplete" style="position: absolute; z-index: 199999; width: 210px; top: 0px; left: -8px; display: none;"><ul></ul></div></div><div class="swiftype-widget"><div class="autocomplete" style="position: absolute; z-index: 199999; width: 210px; top: 40px; left: 1035.57153320313px; display: none;"><ul></ul></div></div></body></html>

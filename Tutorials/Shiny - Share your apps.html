@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)http://shiny.rstudio.com/tutorial/lesson7/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Shiny - Share your apps</title>
+  <meta property="st:title" content="Share your apps">
+  <link rel="stylesheet" type="text/css" href="./Shiny - Share your apps_files/bootstrap.min.css">
+  <script type="text/javascript" async="" src="http://s.swiftypecdn.com/cc.js"></script><script type="text/javascript" async="" src="./Shiny - Share your apps_files/swiftype_nocode-1e2450bb2c8ab71c76799ca74494b5c6.js"></script><script type="text/javascript" async="" src="./Shiny - Share your apps_files/embed.js"></script><script async="" src="http://www.google-analytics.com/analytics.js"></script><script src="./Shiny - Share your apps_files/highlight.min.js"></script>
+  <script src="./Shiny - Share your apps_files/jquery-1.10.2.min.js"></script>
+  <script src="./Shiny - Share your apps_files/bootstrap.min.js"></script>
+  <link href="./Shiny - Share your apps_files/css" rel="stylesheet" type="text/css">
+  <link href="./Shiny - Share your apps_files/css(1)" rel="stylesheet" type="text/css">
+  <link href="./Shiny - Share your apps_files/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="./Shiny - Share your apps_files/global.css">
+  <script src="./Shiny - Share your apps_files/respond.min.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-20375833-9', 'rstudio.com');
+    ga('require', 'linkid', 'linkid.js');
+    ga('send', 'pageview');
+  </script>
+<script type="text/javascript" async="" src="./Shiny - Share your apps_files/embed(1).js"></script><link rel="stylesheet" type="text/css" href="./Shiny - Share your apps_files/swiftype_nocode-862cc0feac61f00e170fbcc6360aeeb7.css"></head>
+<body>
+  <div class="header">
+  <div class="container brand">
+    <div class="search pull-right">
+      <form>
+        <input id="st-search-input" type="text" class="form-control input-sm" placeholder="Search" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<script type="text/javascript">
+  var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'PeTiSRv94X52JCzFyMzF';
+      Swiftype.disableAutocomplete = true;        
+      /** DO NOT EDIT BELOW THIS LINE **/
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+</script>
+
+      </form>
+    </div>
+    <a href="http://shiny.rstudio.com/">Shiny</a>
+    <span id="credits">by <a href="http://www.rstudio.com/">RStudio</a></span>
+  </div>
+</div>
+<div class="container content">
+  <div class="row">
+    <div class="col-md-2 col-sm-12">
+      <div class="nav nav-primary punchup">
+        <ul class="list-unstyled">
+          <li><a href="http://shiny.rstudio.com/">Overview</a></li>
+          <li class="active"><a href="http://shiny.rstudio.com/tutorial/">Tutorial</a></li>
+          <li><a href="http://shiny.rstudio.com/articles/">Articles</a></li>
+          <li><a href="http://shiny.rstudio.com/gallery/">Gallery</a></li>
+          <li><a href="http://shiny.rstudio.com/reference/shiny/latest">Reference</a></li>
+          <li><a href="http://shiny.rstudio.com/deploy/">Deploy</a></li>
+          <li><a href="http://shiny.rstudio.com/help/">Help</a></li>
+        </ul>
+      </div>
+    </div>
+    
+<script>
+$(document).on("click", ".answer-toggle", function(e) {
+  $(this).parent(".answer").find(".answer-content").fadeIn();
+  $(this).hide();
+  e.preventDefault();
+});
+</script>
+
+<div class="col-md-8 col-sm-12 tutorial constrain-image-width">
+  <ul class="pagination">
+    
+    <li><a href="http://shiny.rstudio.com/tutorial/lesson6"><i class="fa fa-chevron-left"></i></a></li>
+    
+
+    
+    <li><a href="http://shiny.rstudio.com/tutorial/lesson1">1</a></li>
+    
+    <li><a href="http://shiny.rstudio.com/tutorial/lesson2">2</a></li>
+    
+    <li><a href="http://shiny.rstudio.com/tutorial/lesson3">3</a></li>
+    
+    <li><a href="http://shiny.rstudio.com/tutorial/lesson4">4</a></li>
+    
+    <li><a href="http://shiny.rstudio.com/tutorial/lesson5">5</a></li>
+    
+    <li><a href="http://shiny.rstudio.com/tutorial/lesson6">6</a></li>
+    
+    <li class="active"><a href="http://shiny.rstudio.com/tutorial/lesson7">Lesson 7</a></li>
+    
+
+    
+    <li class="disabled"><a href="http://shiny.rstudio.com/tutorial/lesson7/#" onclick="return false;"><i class="fa fa-chevron-right"></i></a></li>
+    
+  </ul>
+
+  <h1>
+    <small class="tutorial-lesson-number punchup">Lesson 7</small><br>
+    Share your apps
+  </h1>
+  <p>You can now build a useful Shiny app, but can you share it with others? This lesson will show you several ways to share your Shiny apps. </p>
+
+<p>When it comes to sharing Shiny apps, you have two basic options:</p>
+
+<ol>
+  <li>
+    <p><strong>Share your Shiny app as two files: <code>server.R</code> and <code>ui.R</code>.</strong>  This is the simplest way to share an app, but it works only if your users have R on their own computer (and know how to use it). Users can use these scripts to launch the app from their own R session, just like you’ve been launching the apps.</p>
+  </li>
+  <li>
+    <p><strong>Share your Shiny app as a web page.</strong> This is definitely the most user friendly way to share a Shiny app. Your users can navigate to your app through the internet with a web browser. They will find your app fully rendered, up to date, and ready to go.</p>
+  </li>
+</ol>
+
+<h2 id="share-as-two-r-files">Share as two R files</h2>
+
+<p>Anyone with R can run your Shiny app. They will need a copy of your <code>server.R</code> and <code>ui.R</code> files, as well as any supplementary materials used in your app (e.g., <code>www</code> folders or <code>helpers.R</code> files).</p>
+
+<p>To send your files to another user, email the files (perhaps in a zip file) or host the files online.</p>
+
+<p>Your user can place the files into an app directory in their working directory. They can launch the app in R with the same commands you used on your computer.</p>
+
+<div class="highlight"><pre><code class="r"><span class="c1"><span class="comment"># install.packages("shiny")</span></span>
+<span class="keyword">library</span><span class="p"><span class="paren">(</span></span><span class="identifier">shiny</span><span class="p"><span class="paren">)</span></span>
+<span class="identifier">runApp</span><span class="p"><span class="paren">(</span></span><span class="s"><span class="string">"census-app"</span></span><span class="p"><span class="paren">)</span></span>
+</code></pre></div>
+
+<p><img src="./Shiny - Share your apps_files/zip.png" alt=""></p>
+
+<p>Shiny has three built in commands that make it easy to use files that are hosted online: <code>runUrl</code>, <code>runGitHub</code>, and <code>runGist</code>.</p>
+
+<h3 id="runurl">runUrl</h3>
+
+<p><code>runUrl</code> will download and launch a Shiny app straight from a weblink. </p>
+
+<p>To use <code>runURL</code>:</p>
+
+<ul>
+  <li>Save your Shiny app’s directory as a zip file </li>
+  <li>Host that zip file at its own link on a web page. Anyone with access to the link can launch the app from inside R by running: </li>
+</ul>
+
+<div class="highlight"><pre><code class="r"><span class="keyword">library</span><span class="p"><span class="paren">(</span></span><span class="identifier">shiny</span><span class="p"><span class="paren">)</span></span>
+<span class="identifier">runUrl</span><span class="p"><span class="paren">(</span></span> <span class="s"><span class="string">"&lt;the weblink&gt;"</span></span><span class="p"><span class="paren">)</span></span>
+</code></pre></div>
+
+<h3 id="rungithub">runGitHub</h3>
+
+<p>If you don’t have your own web page to host the files at, you can host your the files for free at <a href="http://www.github.com/">www.github.com</a>. </p>
+
+<p>Github is a popular project hosting site for R developers since it does more than just host files. Github provides many features to support collaboration, such as issue trackers, wikis, and close integration with the <a href="http://git-scm.com/">git</a> version control system. To use Github, you’ll need to sign up (it’s free) and choose a user name.</p>
+
+<p>To share an app through Github, create a project repository on Github. Then store your <code>server.R</code> and <code>ui.R</code> files in the repository, along with any supplementary files that the app uses. </p>
+
+<p>Your users can launch your app by running:</p>
+
+<div class="highlight"><pre><code class="r"><span class="identifier">runGitHub</span><span class="p"><span class="paren">(</span></span> <span class="s"><span class="string">"&lt;your repository name&gt;"</span></span><span class="p">,</span> <span class="s"><span class="string">"&lt;your user name&gt;"</span></span><span class="p"><span class="paren">)</span></span> 
+</code></pre></div>
+
+<h3 id="rungist">runGist</h3>
+
+<p>If you want an anonymous way to post files online, Github offers a pasteboard service for sharing files at <a href="http://gist.github.com/">gist.github.com</a>. You don’t need to sign up for Github to use this service. Even if you have a Github account, Gist can be a simple, quick way to share Shiny projects.</p>
+
+<p>To share your app as a Gist:</p>
+
+<ul>
+  <li>Copy and paste your <code>server.R</code> and <code>ui.R</code> files to the Gist web page.</li>
+  <li>Note the URL that Github gives the Gist.</li>
+</ul>
+
+<p>Once you’ve made a Gist, your users can launch the app with <code>runGist("&lt;gist number&gt;")</code> where <code>"&lt;gist number&gt;"</code> is the number that appears at the end of your Gist’s web address. </p>
+
+<p><a href="https://gist.github.com/jcheng5/3239667">Here</a>’s an example of an app hosted as a Gist. You could launch this app with:</p>
+
+<div class="highlight"><pre><code class="r"><span class="identifier">runGist</span><span class="p"><span class="paren">(</span></span><span class="s"><span class="string">"3239667"</span></span><span class="p"><span class="paren">)</span></span>
+</code></pre></div>
+
+<h2 id="share-as-a-web-page">Share as a web page</h2>
+
+<p>All of the above methods share the same limitation. They require your user to have R and Shiny installed on their computer. </p>
+
+<p>However, Shiny creates the perfect opportunity to share output with people who do <em>not</em> have R (and have no intention of getting it). Your Shiny app happens to be one of the most widely used communication tools in the world: a web page. If you host the app at its own URL, users can visit the app (and not need to worry about code).</p>
+
+<p>If you are familiar with web hosting or have access to an IT department, you can host your Shiny apps yourself.</p>
+
+<p>If you’d prefer an easier experience or need support, RStudio offers three ways to host your Shiny app as a web page: </p>
+
+<ol>
+  <li>Shinyapps.io.</li>
+  <li>Shiny Server, and</li>
+  <li>Shiny Server Pro</li>
+</ol>
+
+<h3 id="shinyappsio">Shinyapps.io</h3>
+
+<p>The easiest way to turn your Shiny app into a web page is to use <a href="http://my.shinyapps.io/">shinyapps.io</a>, RStudio’s hosting service for Shiny apps. </p>
+
+<p>shinyapps.io lets you upload your app straight from your R session to a server hosted by RStudio. You complete control over your app including server administration tools. To find out more about shinyapps.io visit <a href="http://shinyapps.io/">shinyapps.io</a>.</p>
+
+<h3 id="shiny-server">Shiny Server</h3>
+
+<p>Shiny Server is a companion program to Shiny that builds a web server designed to host Shiny apps. It’s free, open source, and available from Github.</p>
+
+<p>Shiny Server is a server program that Linux servers can run to host a Shiny app as a web page. To use Shiny Server, you’ll need a Linux server that has explicit support for Ubuntu 12.04 or greater (64 bit) and CentOS/RHEL 5 (64 bit). If you are not using an explicitly supported distribution, you can still use Shiny Server by building it from source.</p>
+
+<p>You can host multiple Shiny applications on multiple web pages with the same Shiny Server, and you can deploy the apps from behind a firewall.</p>
+
+<p>To see detailed instructions for installing and configuring a Shiny Server, visit the Shiny Server <a href="https://github.com/rstudio/shiny-server/blob/master/README.md">guide</a>.</p>
+
+<h3 id="shiny-server-pro">Shiny Server Pro</h3>
+
+<p>Shiny Server will get your app to the web and take care of all of your Shiny publishing needs. However, if you use Shiny in a for-profit setting, you may want to give yourself the server tools that come with most paid server programs, such as </p>
+
+<ul>
+  <li>Password authentification</li>
+  <li>SSL support</li>
+  <li>Administrator tools</li>
+  <li>Priority support</li>
+  <li>and more. </li>
+</ul>
+
+<p>If so, check out <a href="http://www.rstudio.com/shiny/server/">Shiny Server Pro</a>, RStudio’s paid professional version of Shiny Server. </p>
+
+<h2 id="recap">Recap</h2>
+
+<p>Shiny apps are easy to share. You can share your app as a couple of R scripts, or as a fully functioning web app with its own URL. Each method has its own advantages.</p>
+
+<p>You learned:</p>
+
+<ul>
+  <li>Anyone can launch your app as long as they have a copy of R, Shiny, and a copy of your app’s files.</li>
+  <li><code>runUrl</code>, <code>runGitHub</code>, and <code>runGist</code> make it simple to share and retrieve Shiny files from web links.</li>
+  <li>You can turn your app into a live web app at its own URL with <a href="http://shinyapps.io/">shinyapps.io</a>.</li>
+  <li>You can use the open source Shiny Server to build a Linux server that hosts Shiny apps. </li>
+  <li>If you need closer control, or want to manage large volumes of traffic, you can purchase <a href="http://www.rstudio.com/shiny/server/">Shiny Server Pro</a> from RStudio.</li>
+</ul>
+
+<p>Congratulations. You’ve worked through the entire Shiny development process. You can build a sophisticated, reactive app, deploy it, and share it with others. Users can interact with your data and follow your stories in a new way.</p>
+
+<p>The next step is to practice, and then explore the advanced features of Shiny. </p>
+
+<p>The <a href="http://shiny.rstudio.com/">Shiny Dev Center</a> can help you along the way. It hosts a <a href="http://shiny.rstudio.com/gallery/">gallery</a> of inspiring apps, along with the code that makes the apps. </p>
+
+<p>The Shiny Dev Center also includes an <a href="http://shiny.rstudio.com/articles/">articles</a> section for continuing education. Each article examines an intermediate to advanced Shiny topic in depth.</p>
+
+<p>You now know enough to build your own Shiny apps. See what you can do!</p>
+
+
+  
+    <br>
+  <hr>
+  <p>Let us know what you think! If you have a sophisticated question, or want an in depth answer, please post at the <a href="https://groups.google.com/forum/#!forum/shiny-discuss">Shiny Discussion Forum</a>, where we can respond at length. For help with code, check out <a href="http://shiny.rstudio.com/articles/help.html">How to get help</a>.</p>
+
+<div id="disqus_thread"><iframe id="dsq-2" data-disqus-uid="2" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./Shiny - Share your apps_files/saved_resource.html" style="width: 100% !important; border: none !important; overflow: hidden !important; height: 7049px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe><iframe id="dsq-indicator-north" data-disqus-uid="indicator-north" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" style="width: 637px !important; border: none !important; overflow: hidden !important; top: 0px !important; min-width: 637px !important; max-width: 637px !important; position: fixed !important; z-index: 2147483646 !important; height: 29px !important; min-height: 29px !important; max-height: 29px !important; display: none !important;"></iframe><iframe id="dsq-indicator-south" data-disqus-uid="indicator-south" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" style="width: 637px !important; border: none !important; overflow: hidden !important; bottom: 0px !important; min-width: 637px !important; max-width: 637px !important; position: fixed !important; z-index: 2147483646 !important; height: 29px !important; min-height: 29px !important; max-height: 29px !important; display: none !important;"></iframe></div>
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+var disqus_shortname = 'shiny-rstudio'; // required: replace example with your forum shortname
+
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the &lt;a href="http://disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;</noscript>
+
+</div>
+
+  </div>
+</div>
+<div class="footer">
+  <div class="footer-inner">
+    Shiny is an <a href="http://www.rstudio.com/">RStudio</a> project.
+    © 2014 RStudio, Inc.
+  </div>
+</div>
+
+<script type="text/javascript">
+document.write(unescape("%3Cscript src='//munchkin.marketo.net/munchkin.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="http://munchkin.marketo.net/munchkin.js" type="text/javascript"></script>
+<script>Munchkin.init('709-NXN-706');</script>
+
+
+
+<div id="st-main-container" style="display: none;">
+  <div class="swiftype">
+  <a class="close" data-dismiss="st-modal" href="http://shiny.rstudio.com/tutorial/lesson7/#">×</a>
+  <div class="st-search-bar st-only-input">
+    <form>
+      <div class="st-input-wrapper">
+        <div class="st-input-inner">
+          <input type="text" value="" id="st-overlay-search-input" placeholder="search this website" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+          <span class="st-input-icon"></span>
+          <a href="https://swiftype.com/?ref=pbo" class="st-input-powered-by st-powered-by" target="_blank"></a>
+        </div>
+        <input type="submit" value="search" id="submitbutton">
+      </div>
+    </form>
+  </div>
+  <div class="st-result-wrapper" style="min-height: 612px;">
+    <div class="st-result-listing">
+      <div class="st-results">
+      </div>
+      <div class="st-indexing-notice" style="display: none;">
+        This site is still being indexed. Please try your search again in a few minutes.
+      </div>
+      <div class="st-logo-footer st-powered-by">
+        <a href="http://swiftype.com/?ref=pbo" target="_blank">search by swiftype</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div><div class="swiftype-widget"><div class="autocomplete" style="position: absolute; z-index: 199999; width: 210px; top: 0px; left: -8px; display: none;"><ul></ul></div></div><div class="swiftype-widget"><div class="autocomplete" style="position: absolute; z-index: 199999; width: 210px; top: 40px; left: 1035.57153320313px; display: none;"><ul></ul></div></div></body></html>

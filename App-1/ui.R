@@ -1,24 +1,18 @@
-library(shiny)
-
-# Define UI for application that draws a histogram
 shinyUI(fluidPage(
+  titlePanel("censusVis"),
   
-  # Application title
-  titlePanel("Hello World!"),
-  
-  # Sidebar with a slider input for the number of bins
   sidebarLayout(
     sidebarPanel(
-      sliderInput("bins",
-                  "Number of bins:",
-                  min = 5,
-                  max = 50,
-                  value = 30)
+      helpText("Create demographic maps with information from the 2010 US Census."),
+      selectInput("select", label = h5("Choose a variable to display"), 
+                  choices = list("Percent White" = 1, "Percent Black" = 2,
+                                 "Percent Hispanic" = 3, "Percent Asian" = 4), selected = 1),
+      sliderInput("slider2", label=h5("Range of interest:"),
+                  min = 0, max = 100, value = c(0, 100), ticks=Fhel)
+      
     ),
-    
-    # Show a plot of the generated distribution
     mainPanel(
-      plotOutput("distPlot")
     )
   )
+  
 ))
