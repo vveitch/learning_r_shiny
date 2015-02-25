@@ -1,15 +1,29 @@
 # server.R
 
-shinyServer(function(input, output) {
+source("helpers.R")
+counties <- readRDS("data/counties.rds")
+library(maps)
+library(mapproj)
+
+shinyServer(
   
-  output$text1 <- renderText({ 
-    paste("You have selected ", input$var)
-  })
-  
-  output$sliderResult <- renderText({
-    paste("You have chosen a range that goes from",
-          input$range[1], "to", input$range[2])
-  })
-  
-}
+  function(input, output) {
+    
+    output$map <- renderPlot({
+      data <- switch(input$var, 
+                     "Percent White" = counties$white,
+                     "Percent Black" = counties$black,
+                     "Percent Hispanic" = counties$hispanic,
+                     "Percent Asian" = counties$asian)
+      
+      color <- switch(input$var, 
+                      "Percent White" = "darkgreen",
+                      "Percent Black" = "black",
+                      "Percent Hispanic" = "darkorange",
+                      "Percent Asian" = "darkviolet")
+      
+      percent_map(var = data, color = color, legend.title = input$var, max = input$range[2], min = input$range[1])
+    })    
+    
+  }
 )
